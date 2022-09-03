@@ -9,6 +9,12 @@ const char *regs[] = {
 };
 
 void isa_reg_display() {
+  printf("register info: \n");
+  int i; // num_of_regs = sizeof(regs);
+  for (i = 0; i < 32; ++i) {
+    printf("%4s %16p\n", regs[i], (void *)cpu.gpr[i]._64);
+  }
+  printf("%4s %16p\n", "pc", (void *)cpu.pc);
 }
 
 word_t isa_reg_str2val(const char *s, bool *success) {
